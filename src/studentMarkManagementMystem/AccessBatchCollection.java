@@ -11,9 +11,7 @@ package studentMarkManagementMystem;
 ;
 
 public class AccessBatchCollection {
-
     private static AccessBatchCollection instance;
-
     private BatchCollection batchCollection;
 
     private AccessBatchCollection() {

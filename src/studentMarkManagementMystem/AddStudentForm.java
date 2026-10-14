@@ -11,32 +11,20 @@ import javax.swing.JOptionPane;
  * @author pc
  */
 public class AddStudentForm extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AddStudentForm.class.getName());
+        private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AddStudentForm.class.getName());
 
     /**
      * Creates new form AddStudentForm
      */
 public AddStudentForm() {
-
     initComponents();
-
     setLocationRelativeTo(null);
   setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     batchComboBox.removeAllItems();
-
-    for (int i = 0;
-            i < StudentCollection.batchArray.length;
-            i++) {
-
+    
+    for (int i = 0;  i < StudentCollection.batchArray.length;  i++) {
         if (StudentCollection.batchArray[i].getStatus() == 1) {
-
-            String batch =
-                    String.valueOf(
-                            StudentCollection.batchArray[i]
-                                    .getBatchNumber()
-                    );
-
+            String batch = String.valueOf(  StudentCollection.batchArray[i].getBatchNumber() );
             batchComboBox.insertItemAt(batch,
                     batchComboBox.getItemCount());
         }
@@ -180,41 +168,20 @@ public AddStudentForm() {
 
     private void modeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeComboBoxActionPerformed
 
-
-
     String nic = txtNic.getText().trim();
-
-    int batch = Integer.parseInt(
-            batchComboBox.getSelectedItem().toString()
-    );
-
+    int batch = Integer.parseInt(  batchComboBox.getSelectedItem().toString());
     String mode = ComboBoxMode.getSelectedItem().toString();
-
-
-
-
+    
     if (nic.isEmpty()) {
-
-        JOptionPane.showMessageDialog(
-                this,
-                "Please enter NIC number!"
-        );
-
+        JOptionPane.showMessageDialog(  this, "Please enter NIC number!"  );
         return;
     }
 
-
-
     boolean batchOpen = false;
 
-    for (int i = 0;i < StudentCollection.batchArray.length;
-            i++) {
-
-        if (StudentCollection.batchArray[i]
-                .getBatchNumber()== batch) {
-
+    for (int i = 0;i < StudentCollection.batchArray.length; i++) {
+        if (StudentCollection.batchArray[i] .getBatchNumber()== batch) {
             if (StudentCollection.batchArray[i] .getStatus() == 1) {
-
                 batchOpen = true;
             }
 
@@ -222,51 +189,18 @@ public AddStudentForm() {
         }
     }
 
-
-    
     if (!batchOpen) {
-
-        JOptionPane.showMessageDialog(
-                this,
-                "Selected batch is closed!\n"
-                + "You cannot add students to this batch.",
-                "Enrollment Closed",
-                JOptionPane.WARNING_MESSAGE
-        );
-
+        JOptionPane.showMessageDialog(  this,  "Selected batch is closed!\n" + "You cannot add students to this batch.", "Enrollment Closed",  JOptionPane.WARNING_MESSAGE );
         return;
     }
 
-
-
-
     for (int i = 0;
-            i < StudentCollection.studentArray.length;
-            i++) {
-
-        Student existingStudent =
-                StudentCollection.studentArray[i];
-
-        if (nic.equalsIgnoreCase(
-                existingStudent.getnic())) {
-
+            i < StudentCollection.studentArray.length; i++) {
+        Student existingStudent =StudentCollection.studentArray[i];
+        if (nic.equalsIgnoreCase(existingStudent.getnic())) {
+            
             JOptionPane.showMessageDialog(
-                    this,
-
-                    "Student already exists!\n\n"
-                    + "Student ID : "
-                    + existingStudent.getId()
-                    + "\nNIC : "
-                    + existingStudent.getnic()
-                    + "\nName : "
-                    + existingStudent.getName()
-                    + "\nPRF Marks : "
-                    + existingStudent.getPrfMarks()
-                    + "\nDBMS Marks : "
-                    + existingStudent.getDbmsMarks(),
-
-                    "Existing Student",
-
+                    this,  "Student already exists!\n\n" + "Student ID : " + existingStudent.getId() + "\nNIC : " + existingStudent.getnic() + "\nName : "+ existingStudent.getName()+ "\nPRF Marks : "+ existingStudent.getPrfMarks()+ "\nDBMS Marks : "+ existingStudent.getDbmsMarks(), "Existing Student",
                     JOptionPane.INFORMATION_MESSAGE
             );
 
@@ -274,111 +208,53 @@ public AddStudentForm() {
         }
     }
 
-
-
-
     String name = txtName.getText().trim();
-
-    if (name.isEmpty()) {
-
-        JOptionPane.showMessageDialog(
+    if (name.isEmpty()) {JOptionPane.showMessageDialog(
                 this,
                 "Please enter Student Name!"
         );
 
         return;
     }
-
-
-
     int lastNumber = 0;
-
     for (int i = 0;
-            i < StudentCollection.studentArray.length;
-            i++) {
+            i < StudentCollection.studentArray.length; i++) {
+        String regNo =StudentCollection.studentArray[i].getId();
 
-        String regNo =
-                StudentCollection.studentArray[i].getId();
-
-        // Selected batch
         if (regNo.substring(4, 7)
                 .equals(String.valueOf(batch))) {
-
-            // Last 3 digits
-            int number =
-                    Integer.parseInt(
-                            regNo.substring(7)
-                    );
-
+            int number =Integer.parseInt(regNo.substring(7)  );
             if (number > lastNumber) {
                 lastNumber = number;
             }
         }
     }
-
-   
     lastNumber++;
-
-
-
-
-    String studentId =
-            mode
-            + "24"
-            + batch
-            + String.format("%03d", lastNumber);
-
-
-
+    String studentId = mode+ "24" + batch + String.format("%03d", lastNumber);
+    
     int prfMarks = -2;
     int dbmsMarks = -2;
 
-
-
     Student newStudent =
-            new Student(
-                    studentId,
-                    nic,
-                    name,
-                    prfMarks,
-                    dbmsMarks
-            );
-
-
+            new Student( studentId, nic, name,  prfMarks,dbmsMarks );
 
     Student[] tempStudentArray =
-            new Student[
-                    StudentCollection.studentArray.length + 1
-            ];
+            new Student[ StudentCollection.studentArray.length + 1 ];
 
 
 
-    for (int i = 0;
-            i < StudentCollection.studentArray.length; i++) {
-
-        tempStudentArray[i] =
-                StudentCollection.studentArray[i];
+    for (int i = 0; i < StudentCollection.studentArray.length; i++) {
+        tempStudentArray[i] = StudentCollection.studentArray[i];
     }
 
+    tempStudentArray[StudentCollection.studentArray.length ] = newStudent;
 
-    tempStudentArray[
-            StudentCollection.studentArray.length
-    ] = newStudent;
+    StudentCollection.studentArray =tempStudentArray;
 
-
-
-    StudentCollection.studentArray =
-            tempStudentArray;
-
-
-    
-    //  SUCCESS MESSAGE
-
-
+    //  SUCCESS MESSAG
     JOptionPane.showMessageDialog(
             this,
-
-            "Student added successfully!\n\n"
+  "Student added successfully!\n\n"
             + "Student ID : "
             + studentId
             + "\nNIC : "
@@ -395,11 +271,9 @@ public AddStudentForm() {
             JOptionPane.INFORMATION_MESSAGE
     );
 
-
-
     txtName.setText("");
     txtNic.setText("");
-
+    
    ComboBoxMode.setSelectedIndex(0);
     batchComboBox.setSelectedIndex(0);
 

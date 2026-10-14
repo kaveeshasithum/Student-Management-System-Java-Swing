@@ -102,50 +102,32 @@ public class AddBatchStudent extends javax.swing.JFrame {
                                  
 
     int batchNumber = Integer.parseInt(txtBatchNum.getText());
-
     boolean exists = false;
-
     for (int i = 0; i < Batch.batchArray.length; i++) {
-
         if (Batch.batchArray[i].getBatchNumber() == batchNumber) {
             exists = true;
             break;
         }
     }
-
     if (exists) {
-
         javax.swing.JOptionPane.showMessageDialog(
                 this,
                 "Batch Number already exists!"
         );
-
     } 
-    
-
     else {
-
-       
         Batch newBatch = new Batch(
                 batchNumber,
                 Batch.ENROLLMENTOPEN
         );
-
-     
         Batch[] newArray =
                 new Batch[Batch.batchArray.length + 1];
-
-     
         for (int i = 0; i < Batch.batchArray.length; i++) {
             newArray[i] = Batch.batchArray[i];
         }
-
-       
         newArray[newArray.length - 1] = newBatch;
-
-        
         Batch.batchArray = newArray;
-
+        
         javax.swing.JOptionPane.showMessageDialog(
                 this,
                 "Batch added successfully!\n"
