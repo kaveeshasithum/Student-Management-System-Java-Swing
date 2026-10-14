@@ -107,25 +107,17 @@ public class StudentRegistrationReport extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
 
-
-
     StudentCollection collection = new StudentCollection();
-
     Student[] students = collection.getAllStudent();
 
-    DefaultTableModel model =
-            (DefaultTableModel) tblStudent.getModel();
+    DefaultTableModel model = (DefaultTableModel) tblStudent.getModel();
 
     model.setRowCount(0);
 
-    // Bubble Sort - Name A to Z
     for (int i = 0; i <StudentCollection.studentArray.length - 1; i++) {
-
         for (int j = 0; j < StudentCollection.studentArray.length - 1 - i; j++) {
 
-            if (students[j].getName()
-                    .compareToIgnoreCase(students[j + 1].getName()) > 0) {
-
+            if (students[j].getName().compareToIgnoreCase(students[j + 1].getName()) > 0) {
                 Student temp = students[j];
                 students[j] = students[j + 1];
                 students[j + 1] = temp;
@@ -133,11 +125,8 @@ public class StudentRegistrationReport extends javax.swing.JFrame {
         }
     }
 
-    // Display students
     for (int i = 0; i <StudentCollection.studentArray.length; i++) {
-
         Student s = students[i];
-
         model.addRow(new Object[]{
             i + 1,
             s.getId(),

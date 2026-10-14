@@ -155,48 +155,29 @@ public class PRFMarksUpdate extends javax.swing.JFrame {
     try {
         newMarks = Integer.parseInt(txtPrfMarks.getText().trim());
     } catch (NumberFormatException e) {
-
-        javax.swing.JOptionPane.showMessageDialog(
-                this,
-                "Enter PRF marks between 0 and 100"
-        );
+        javax.swing.JOptionPane.showMessageDialog( this, "Enter PRF marks between 0 and 100" );
 
         return;
     }
 
     if (newMarks < 0 || newMarks > 100) {
 
-        javax.swing.JOptionPane.showMessageDialog(
-                this,
-                "PRF marks must be between 0 and 100"
-        );
-
+        javax.swing.JOptionPane.showMessageDialog( this, "PRF marks must be between 0 and 100" );
         return;
     }
 
-    StudentCollection collection =
-            AccessStudentCollection
-                    .getInstance()
-                    .getStudentCollection();
-
+    StudentCollection collection = AccessStudentCollection .getInstance().getStudentCollection();
     Student student = collection.searchStudent(id);
 
     if (student == null) {
 
-        javax.swing.JOptionPane.showMessageDialog(
-                this,
-                "Student not found"
-        );
-
+        javax.swing.JOptionPane.showMessageDialog( this,"Student not found" );
         return;
     }
 
     student.setPrfMarks(newMarks);
 
-    javax.swing.JOptionPane.showMessageDialog(
-            this,
-            "PRF marks updated successfully"
-    );
+    javax.swing.JOptionPane.showMessageDialog( this, "PRF marks updated successfully");
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed

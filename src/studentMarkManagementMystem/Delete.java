@@ -192,11 +192,7 @@ public class Delete extends javax.swing.JFrame {
             return;
         }
 
-        Student[] studentArray =
-        AccessStudentCollection
-        .getInstance()
-        .getStudentCollection()
-        .getAllStudent();
+        Student[] studentArray =AccessStudentCollection.getInstance() .getStudentCollection().getAllStudent();
 
         boolean found = false;
 
@@ -204,13 +200,11 @@ public class Delete extends javax.swing.JFrame {
 
             if (studentArray[i] != null &&
                 id.equalsIgnoreCase(studentArray[i].getId())) {
-
-                // Array එක shift කරනවා
+           
                 for (int j = i; j < studentArray.length - 1; j++) {
                     studentArray[j] = studentArray[j + 1];
                 }
-
-                // Last position එක null කරනවා
+              
                 studentArray[studentArray.length - 1] = null;
 
                 found = true;
@@ -220,10 +214,7 @@ public class Delete extends javax.swing.JFrame {
 
         if (found) {
 
-            JOptionPane.showMessageDialog(
-                this,
-                "Student Deleted Successfully"
-            );
+            JOptionPane.showMessageDialog(   this,  "Student Deleted Successfully" );
 
             txtId.setText("");
             txtNic.setText("");
@@ -232,17 +223,11 @@ public class Delete extends javax.swing.JFrame {
 
         } else {
 
-            JOptionPane.showMessageDialog(
-                this,
-                "Student Not Found"
-            );
+            JOptionPane.showMessageDialog(  this,"Student Not Found");
 
         }
 
-        Student student = AccessStudentCollection
-        .getInstance()
-        .getStudentCollection()
-        .searchStudent(id);
+        Student student = AccessStudentCollection .getInstance().getStudentCollection().searchStudent(id);
 
         if (student != null) {
 
@@ -255,10 +240,7 @@ public class Delete extends javax.swing.JFrame {
 
         } else {
 
-            JOptionPane.showMessageDialog(
-                this,
-                "Student Not Found"
-            );
+            JOptionPane.showMessageDialog(this, "Student Not Found" );
 
         }
     }//GEN-LAST:event_btnSearchStudentActionPerformed

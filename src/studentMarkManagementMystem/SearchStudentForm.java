@@ -200,8 +200,7 @@ public class SearchStudentForm extends javax.swing.JFrame {
 
 String id = txtId.getText().trim();
 
-    if (id.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Enter Student ID");
+    if (id.isEmpty()) {  JOptionPane.showMessageDialog(this, "Enter Student ID");
         return;
     }
 
@@ -218,10 +217,7 @@ String id = txtId.getText().trim();
 
     } else {
 
-        JOptionPane.showMessageDialog(
-                this,
-                "Student Not Found"
-        );
+        JOptionPane.showMessageDialog( this, "Student Not Found" );
     
 }
         

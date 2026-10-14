@@ -23,14 +23,8 @@ public class ViewBatchDetails extends javax.swing.JFrame {
 
     model.setDataVector(
         new Object[][] {},
-        new Object[] {
-            "No",
-            "Batch Number",
-            "Student Count",
-            "Status"
-        }
+        new Object[] { "No", "Batch Number","Student Count","Status" }
     );
-
     tblBatchDetails.setDefaultEditor(Object.class, null);
 }
 
@@ -39,21 +33,14 @@ public static int getStudentCount(int batchNumber) {
     int count = 0;
 
     Student[] students =
-            AccessStudentCollection
-                    .getInstance()
-                    .getStudentCollection()
-                    .getAllStudent();
+            AccessStudentCollection .getInstance().getStudentCollection().getAllStudent();
 
     for (int i = 0; i < students.length; i++) {
-
         if (students[i] == null) {
             continue;
         }
-
         String regNumber = students[i].getId();
-
         String batch = regNumber.substring(4, 7);
-
         if (Integer.parseInt(batch) == batchNumber) {
             count++;
         }
@@ -157,37 +144,23 @@ public static int getStudentCount(int batchNumber) {
 
 
 
- DefaultTableModel dtm =
-        (DefaultTableModel) tblBatchDetails.getModel();
+ DefaultTableModel dtm = (DefaultTableModel) tblBatchDetails.getModel();
 
 dtm.setRowCount(0);
-
 for (int i = 0; i < Batch.batchArray.length; i++) {
+    int batchNumber =Batch.batchArray[i].getBatchNumber();
 
-    int batchNumber =
-            Batch.batchArray[i].getBatchNumber();
-
-    int studentCount =
-            getStudentCount(batchNumber);
+    int studentCount =getStudentCount(batchNumber);
 
     String status;
-
-    if (Batch.batchArray[i].getStatus()
-            == Batch.ENROLLMENTOPEN) {
-
+    if (Batch.batchArray[i].getStatus() == Batch.ENROLLMENTOPEN) {
         status = "ENROLLMENT OPEN";
 
     } else {
-
         status = "ENROLLMENT CLOSED";
     }
 
-    dtm.addRow(new Object[]{
-        i + 1,
-        batchNumber,
-        studentCount,
-        status
-    });
+    dtm.addRow(new Object[]{ i + 1,batchNumber, studentCount, status});
 }
 
 

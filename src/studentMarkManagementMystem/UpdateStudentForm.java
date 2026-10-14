@@ -152,33 +152,23 @@ public class UpdateStudentForm extends javax.swing.JFrame {
     String name = txtName.getText().trim();
     String nic = txtNic.getText().trim();
 
-    Student student = AccessStudentCollection
-            .getInstance()
-            .getStudentCollection()
-            .searchStudent(id);
+    Student student = AccessStudentCollection.getInstance().getStudentCollection().searchStudent(id);
 
     if (student == null) {
 
-        JOptionPane.showMessageDialog(
-                this,
-                "Student not found!"
-        );
-
+        JOptionPane.showMessageDialog( this,"Student not found!");
         return;
     }
 
     student.setName(name);
     student.setnic(nic);
 
-    JOptionPane.showMessageDialog(
-            this,
-            "Student updated successfully!"
-    );
+    JOptionPane.showMessageDialog( this,"Student updated successfully!" );
      txtId.setText("");
     txtName.setText("");
     txtNic.setText("");
 
-    // Cursor back to Student ID
+   
     txtId.requestFocus();
     }//GEN-LAST:event_btnUpdateStudentActionPerformed
 
@@ -187,24 +177,12 @@ public class UpdateStudentForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-                                         
-
-                                          
 
     String id = txtId.getText().trim();
-
-    Student student = AccessStudentCollection
-            .getInstance()
-            .getStudentCollection()
-            .searchStudent(id);
+    Student student = AccessStudentCollection.getInstance().getStudentCollection().searchStudent(id);
 
     if (student == null) {
-
-        JOptionPane.showMessageDialog(
-                this,
-                "Student not found!"
-        );
-
+        JOptionPane.showMessageDialog( this,"Student not found!" );
         txtName.setText("");
         txtNic.setText("");
 

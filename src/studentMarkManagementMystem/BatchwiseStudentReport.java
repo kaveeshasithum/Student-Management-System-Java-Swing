@@ -110,32 +110,22 @@ public class BatchwiseStudentReport extends javax.swing.JFrame {
 
     String batch = txtBatchNumber.getText().trim();
 
-    DefaultTableModel model =
-            (DefaultTableModel) tblStudent.getModel();
-
+    DefaultTableModel model =(DefaultTableModel) tblStudent.getModel();
     model.setRowCount(0);
 
-    StudentCollection collection =
-            AccessStudentCollection.getInstance()
-            .getStudentCollection();
+    StudentCollection collection =AccessStudentCollection.getInstance().getStudentCollection();
 
     Student[] students = collection.getAllStudent();
 
     // Alphabetical order by Student Name
     for (int i = 0; i < students.length - 1; i++) {
-
         for (int j = i + 1; j < students.length; j++) {
-
             if (students[i] != null && students[j] != null) {
-
                 String batch1 = students[i].getId().substring(4, 7);
                 String batch2 = students[j].getId().substring(4, 7);
-
                 if (batch1.equals(batch) && batch2.equals(batch)) {
 
-                    if (students[i].getName()
-                            .compareToIgnoreCase(students[j].getName()) > 0) {
-
+                    if (students[i].getName().compareToIgnoreCase(students[j].getName()) > 0) {
                         Student temp = students[i];
                         students[i] = students[j];
                         students[j] = temp;
@@ -149,14 +139,10 @@ public class BatchwiseStudentReport extends javax.swing.JFrame {
     int no = 1;
 
     for (Student student : students) {
-
         if (student != null) {
-
-            String studentBatch =
-                    student.getId().substring(4, 7);
+            String studentBatch =student.getId().substring(4, 7);
 
             if (studentBatch.equals(batch)) {
-
                 model.addRow(new Object[]{
                     no++,
                     student.getId(),

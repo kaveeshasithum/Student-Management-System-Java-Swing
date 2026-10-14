@@ -111,16 +111,12 @@ public class NewJFrame extends javax.swing.JFrame {
 
     model.setRowCount(0);
 
-    StudentCollection collection =
-            AccessStudentCollection.getInstance()
-            .getStudentCollection();
+    StudentCollection collection =AccessStudentCollection.getInstance().getStudentCollection();
 
     Student[] students = collection.getAllStudent();
-
     int no = 1;
 
     for (Student student : students) {
-
         if (student != null) {
 
             int prf = student.getPrfMarks();

@@ -152,73 +152,43 @@ public class DBMSMarksUpdate extends javax.swing.JFrame {
         String id = txtStudentId.getText().trim();
 
         int newMarks;
-
         try {
             newMarks = Integer.parseInt(txtDBMSMarks.getText().trim());
         } catch (NumberFormatException e) {
-
             javax.swing.JOptionPane.showMessageDialog(
-                this,
-                "Enter DBMS marks between 0 and 100"
+                this, "Enter DBMS marks between 0 and 100"
             );
 
             return;
         }
-
         if (newMarks < 0 || newMarks > 100) {
 
             javax.swing.JOptionPane.showMessageDialog(
-                this,
-                "DBMS marks must be between 0 and 100"
+                this, "DBMS marks must be between 0 and 100"
             );
-
             return;
         }
 
-        StudentCollection collection =
-        AccessStudentCollection
-        .getInstance()
-        .getStudentCollection();
-
+        StudentCollection collection = AccessStudentCollection .getInstance().getStudentCollection();
         Student student = collection.searchStudent(id);
 
         if (student == null) {
-
-            javax.swing.JOptionPane.showMessageDialog(
-                this,
-                "Student not found"
-            );
-
+            javax.swing.JOptionPane.showMessageDialog( this, "Student not found");
             return;
         }
 
         student.setDbmsMarks(newMarks);
-
-        javax.swing.JOptionPane.showMessageDialog(
-            this,
-            "DBMS marks updated successfully"
-        );
-
+        javax.swing.JOptionPane.showMessageDialog( this,"DBMS marks updated successfully" );
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtStudentIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentIdActionPerformed
 
         String id = txtStudentId.getText().trim();
-
-        StudentCollection collection =
-        AccessStudentCollection
-        .getInstance()
-        .getStudentCollection();
-
+        StudentCollection collection = AccessStudentCollection.getInstance().getStudentCollection();
         Student student = collection.searchStudent(id);
-
         if (student == null) {
-
-            javax.swing.JOptionPane.showMessageDialog(
-                this,
-                "Student not found"
-            );
+            javax.swing.JOptionPane.showMessageDialog( this, "Student not found");
 
             txtName.setText("");
             txtNic.setText("");

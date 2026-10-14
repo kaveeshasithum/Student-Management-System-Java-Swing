@@ -12,11 +12,11 @@ public class Student {
     public Student(String id, String nic, String name,
                    int prfMarks, int dbmsMarks) {
 
-        this.id = id;
-        this.nic = nic;
-        this.name = name;
-        this.prfMarks = prfMarks;
-        this.dbmsMarks = dbmsMarks;
+                            this.id = id;
+                            this.nic = nic;
+                            this.name = name;
+                            this.prfMarks = prfMarks;
+                            this.dbmsMarks = dbmsMarks;
     }
 
     // ID

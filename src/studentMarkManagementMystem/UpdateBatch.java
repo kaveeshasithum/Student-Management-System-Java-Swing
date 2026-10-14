@@ -16,12 +16,10 @@ public class UpdateBatch extends javax.swing.JFrame {
      * Creates new form UpdateBatch
      */
     public UpdateBatch() {
-        
-        
+
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
         ButtonGroup group = new ButtonGroup();
 
         group.add(jCheckBoxOpen);
@@ -144,10 +142,7 @@ public class UpdateBatch extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-
-
     int batchNumber;
-
     try {
         batchNumber = Integer.parseInt(
                 txtBatchNumber.getText().trim()
@@ -161,33 +156,23 @@ public class UpdateBatch extends javax.swing.JFrame {
     }
 
     Batch[] batches = Batch.batchArray;
-
     for (Batch batch : batches) {
-
         if (batch.getBatchNumber() == batchNumber) {
-
             if (jCheckBoxOpen.isSelected()) {
-
                 batch.setStatus(Batch.ENROLLMENTOPEN);
 
             } else if (jCheckBoxClosed.isSelected()) {
-
                 batch.setStatus(Batch.ENROLLMENTCLOSED);
 
             } else {
 
-                javax.swing.JOptionPane.showMessageDialog(
-                        this,
-                        "Select enrollment status"
-                );
+                javax.swing.JOptionPane.showMessageDialog( this, "Select enrollment status" );
                 return;
             }
-
             javax.swing.JOptionPane.showMessageDialog(
                     this,
                     "Batch updated successfully"
             );
-
             return;
         }
     }
@@ -202,13 +187,9 @@ public class UpdateBatch extends javax.swing.JFrame {
 
     private void txtBatchNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBatchNumberActionPerformed
 
-
     int batchNumber;
-
     try {
-        batchNumber = Integer.parseInt(
-                txtBatchNumber.getText().trim()
-        );
+        batchNumber = Integer.parseInt(  txtBatchNumber.getText().trim() );
     } catch (NumberFormatException e) {
         javax.swing.JOptionPane.showMessageDialog(
                 this,
@@ -238,10 +219,7 @@ public class UpdateBatch extends javax.swing.JFrame {
         }
     }
 
-    javax.swing.JOptionPane.showMessageDialog(
-            this,
-            "Batch not found"
-    );
+    javax.swing.JOptionPane.showMessageDialog( this, "Batch not found");
 
     
         // TODO add your handling code here:
